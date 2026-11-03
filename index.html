@@ -388,6 +388,7 @@ input[type=range]{width:100%;accent-color:var(--brick);height:28px}
 .gal img{width:100%;height:auto;transition:transform .7s ease}
 .gal button:hover img{transform:scale(1.05)}
 .gal span{position:absolute;left:10px;bottom:10px;font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(21,23,26,.75);color:#fff}
+@media (max-width:640px){.gal{columns:2;column-gap:10px}.gal button{margin-bottom:10px}.gal img{max-height:300px;object-fit:cover}.gal span{left:6px;right:6px;bottom:6px;font-size:11px;padding:4px 8px;white-space:normal;line-height:1.25}}
 
 /* ===== Promise / reviews / faq ===== */
 .promise{background:var(--ink);color:var(--on-dark)}
@@ -596,7 +597,7 @@ footer.foot .logo-txt strong{color:var(--on-dark)}
         <span class="tagline">POP ceiling · Salt Lake</span>
       </div>
       <div class="ph ph-b rv" data-depth="22"><img src="img/client-elevation.jpg" alt="Decorative pink and white house exterior with balconies"><span class="tagline">Elevation work</span></div>
-      <div class="ph ph-c rv" data-depth="16"><img src="photos/hero-construction.jpg" data-fb="img/client-brickwork.jpg" alt="Mason in a yellow helmet laying bricks"><span class="tagline">Raj mistri at work</span></div>
+      <div class="ph ph-c rv" data-depth="16"><img src="img/client-footing-rebar.jpg" alt="Column footing rebar cage on site"><span class="tagline">RCC footing work</span></div>
       <div class="float-card rv" data-depth="30" id="floatCard">
         <small>Live estimate</small>
         <b class="mono" id="fcAmt">₹26,400</b>
@@ -785,8 +786,8 @@ footer.foot .logo-txt strong{color:var(--on-dark)}
       <h2><span data-en="Drag to see the finish." data-bn="টেনে দেখুন ফিনিশিং।">Drag to see the finish.</span><span class="bn">কাঁচা ইট থেকে সাজানো বাড়ি</span></h2>
     </div>
     <div class="ba" id="ba">
-      <img src="img/client-brickwork.jpg" alt="House at brickwork stage">
-      <img class="after" id="baAfter" src="img/client-elevation.jpg" alt="Finished decorative house exterior">
+      <img src="img/client-site-scaffold.jpg" alt="House under construction with scaffolding">
+      <img class="after" id="baAfter" src="img/client-elevation-modern.jpg" alt="Finished modern house elevation">
       <span class="handle"></span>
       <span class="lab l">Brickwork stage</span><span class="lab r">Finished</span>
       <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Compare before and after">
@@ -982,6 +983,20 @@ const IMG = {
   pvcWalnut: {src:"img/mat-pvc-walnut.jpg", fb:"img/mat-pvc-walnut.jpg"},
   pvcMarble: {src:"img/mat-pvc-uvmarble.jpg", fb:"img/mat-pvc-uvmarble.jpg"},
   pvcSage: {src:"img/mat-pvc-sage.jpg", fb:"img/mat-pvc-sage.jpg"},
+  pvcShowroom: {src:"img/client-pvc-showroom.jpg", fb:"img/client-pvc-showroom.jpg"},
+  pvcFloral: {src:"img/client-pvc-floral.jpg", fb:"img/client-pvc-floral.jpg"},
+  popRed: {src:"img/client-pop-red.jpg", fb:"img/client-pop-red.jpg"},
+  scaffold: {src:"img/client-site-scaffold.jpg", fb:"img/client-site-scaffold.jpg"},
+  ceilJaali: {src:"img/client-ceiling-jaali.jpg", fb:"img/client-ceiling-jaali.jpg"},
+  elevModern: {src:"img/client-elevation-modern.jpg", fb:"img/client-elevation-modern.jpg"},
+  blueCeil: {src:"img/client-blue-ceiling-vinyl.jpg", fb:"img/client-blue-ceiling-vinyl.jpg"},
+  fanRing: {src:"img/client-ceiling-fan-ring.jpg", fb:"img/client-ceiling-fan-ring.jpg"},
+  footing: {src:"img/client-footing-rebar.jpg", fb:"img/client-footing-rebar.jpg"},
+  featureWall: {src:"img/client-feature-wall.jpg", fb:"img/client-feature-wall.jpg"},
+  rebarSlab: {src:"img/client-rebar-slab.jpg", fb:"img/client-rebar-slab.jpg"},
+  rebarCol: {src:"img/client-rebar-column.jpg", fb:"img/client-rebar-column.jpg"},
+  houseDone: {src:"img/client-house-finished.jpg", fb:"img/client-house-finished.jpg"},
+  houseDone2: {src:"img/client-house-finished-2.jpg", fb:"img/client-house-finished-2.jpg"},
 };
 const img = (k, alt, cls="") => `<img src="${IMG[k].src}" data-fb="${IMG[k].fb}" alt="${alt}" loading="lazy" class="${cls}">`;
 
@@ -992,59 +1007,53 @@ const CATS = [
   {id:"tiles",en:"Tiles",bn:"টালির কাজ",d:"Floor, bathroom, kitchen and parking tiles",img:"tiles",c:"#00b4a6"},
   {id:"marble",en:"Marble & Granite",bn:"মার্বেলের কাজ",d:"Flooring, staircases, counters and polishing",img:"marbleFloor",c:"#b48cff"},
   {id:"ceiling",en:"False Ceiling",bn:"ফলস সিলিং",d:"POP, gypsum and PVC with cove LED",img:"ceiling",c:"#ffd166"},
-  {id:"exterior",en:"Elevation & Exterior",bn:"বাড়ির সামনের ডিজাইন",d:"3D elevation, pillars, railing and cladding",img:"elevation",c:"#ff5fa2"},
+  {id:"exterior",en:"Elevation & Exterior",bn:"বাড়ির সামনের ডিজাইন",d:"3D elevation, pillars, railing and cladding",img:"elevModern",c:"#ff5fa2"},
   {id:"vinyl",en:"Vinyl Floor & Wallpaper",bn:"ভিনাইল ফ্লোর ও ওয়ালপেপার",d:"PVC floor rolls, wood-look vinyl, 3D wallpaper and marble sheets",img:"vinylShop",c:"#ffb703"},
-  {id:"pvcepoxy",en:"PVC Panels & Epoxy",bn:"পিভিসি প্যানেল ও ইপক্সি",d:"Fluted & UV-marble wall panels, 3D metallic epoxy floors, epoxy grout",img:"epoxyOcean",c:"#2ad4c4"},
+  {id:"pvcepoxy",en:"PVC Panels & Epoxy",bn:"পিভিসি প্যানেল ও ইপক্সি",d:"Fluted & UV-marble wall panels, 3D metallic epoxy floors, epoxy grout",img:"pvcShowroom",c:"#2ad4c4"},
 ];
 const U = {sqft:"sq ft", rft:"running ft", step:"step", floor:"floor"};
 const ITEMS = [
-  {id:"house",cat:"build",en:"Full House Construction",bn:"সম্পূর্ণ বাড়ি নির্মাণ",img:"build",unit:"sqft",r:[1650,1950,2450],def:1000,tag:["Most booked","hot"],d:"Foundation to finishing on built-up area. RCC frame, brickwork, plaster, flooring, wiring and plumbing.",inc:["Structural drawing & soil check","ISI cement and Fe-550 TMT steel","Brickwork, plaster, flooring","Electrical & plumbing points","Supervisor on site daily"]},
-  {id:"brick",cat:"build",en:"Brickwork, 10-inch wall",bn:"ইটের গাঁথনি",img:"mason",unit:"sqft",r:[135,155,180],def:300,d:"First-class red bricks in 1:6 cement mortar, true to line and plumb.",inc:["First-class kiln bricks","1:6 cement-sand mortar","Curing for 7 days","Lintel & sill bands extra"]},
-  {id:"plaster",cat:"build",en:"Cement Plastering",bn:"সিমেন্ট প্লাস্টার",img:"plaster",unit:"sqft",r:[32,40,52],def:800,d:"12 mm inside, 18 mm outside, smooth or sponge finish ready for putty.",inc:["Chicken mesh at joints","Level & right-angle check","Curing included"]},
-  {id:"reno",cat:"build",en:"Home Renovation & Repair",bn:"বাড়ি সংস্কার ও মেরামত",img:"worker",unit:"sqft",r:[450,750,1200],def:400,tag:["Popular","gold"],d:"Break, rebuild and refinish old rooms, bathrooms and kitchens.",inc:["Demolition & debris removal","Wall re-plaster and crack repair","New tiles, paint and fittings"]},
-  {id:"boundary",cat:"build",en:"Boundary Wall",bn:"বাউন্ডারি ওয়াল",img:"brick",unit:"rft",r:[1100,1400,1850],def:120,d:"5 ft wall with footing, plinth beam and plaster, gate pillars included.",inc:["Footing & plinth beam","Plaster both sides","Gate pillars"]},
-  {id:"waterproof",cat:"build",en:"Roof Waterproofing",bn:"ছাদ ওয়াটারপ্রুফিং",img:"roof",unit:"sqft",r:[38,55,85],def:900,d:"Stops monsoon seepage. Crack filling, primer and two-coat membrane.",inc:["Crack & joint filling","Polymer / PU coating","5-year leak warranty (Premium)"]},
-  {id:"intpaint",cat:"paint",en:"Interior Wall Painting",bn:"ঘরের ভিতরের রং",img:"painter",unit:"sqft",r:[14,22,32],def:1200,tag:["Diwali offer","hot"],d:"Putty, primer and two coats of emulsion. Price is per sq ft of paintable wall.",inc:["Furniture covered with sheets","2 coats wall putty","1 coat primer + 2 coats emulsion","Clean-up after work"]},
-  {id:"extpaint",cat:"paint",en:"Exterior Weatherproof Paint",bn:"বাইরের দেওয়ালের রং",img:"exterior",unit:"sqft",r:[18,28,42],def:1500,d:"Anti-algae, rain-proof exterior emulsion with crack filling.",inc:["Pressure wash","Crack filling","Exterior primer + 2 coats","Scaffolding included"]},
-  {id:"texture",cat:"paint",en:"Texture & Designer Walls",bn:"টেক্সচার ডিজাইন ওয়াল",img:"paints",unit:"sqft",r:[65,110,180],def:120,d:"Stucco, metallic, rustic or stencil feature walls for living rooms.",inc:["Design sample on wall first","Base coat + texture coat","Protective top coat"]},
-  {id:"polish",cat:"paint",en:"Door & Furniture Polish",bn:"দরজা ও আসবাবের পালিশ",img:"living",unit:"sqft",r:[55,85,140],def:150,d:"Melamine, PU or duco polish for doors, windows and wardrobes.",inc:["Sanding & filling","Sealer coat","Melamine / PU top coat"]},
-  {id:"floortile",cat:"tiles",en:"Vitrified Floor Tiles",bn:"ফ্লোর টাইলস",img:"tiles",unit:"sqft",r:[95,140,210],def:800,tag:["Best value","gold"],d:"2×2 or 2×4 ft vitrified tiles, laid with adhesive and epoxy-free grout.",inc:["Tile + adhesive + grout","Laser levelling","Skirting included","Wastage 8% included"]},
-  {id:"bathtile",cat:"tiles",en:"Bathroom Tiling",bn:"বাথরুম টাইলস",img:"bath",unit:"sqft",r:[110,160,240],def:220,d:"Anti-skid floor and full-height wall tiles with proper slope to drain.",inc:["Waterproofing under floor","Anti-skid floor tiles","Wall tiles to 7 ft","Slope to drain"]},
-  {id:"kittile",cat:"tiles",en:"Kitchen Dado Tiles",bn:"কিচেন টাইলস",img:"kitchen",unit:"sqft",r:[100,150,220],def:60,d:"Stain-proof wall tiles behind the counter, 2 ft above slab.",inc:["Glossy or matte tiles","Corner beading","Epoxy grout (Premium)"]},
-  {id:"parking",cat:"tiles",en:"Parking & Outdoor Tiles",bn:"পার্কিং টাইলস",img:"brick",unit:"sqft",r:[70,95,140],def:400,d:"Heavy-duty chequered or paver tiles for car parking and courtyards.",inc:["PCC base","Heavy-duty tiles","Slope for rainwater"]},
-  {id:"marblefloor",cat:"marble",en:"Marble Flooring",bn:"মার্বেল ফ্লোরিং",img:"marbleFloor",unit:"sqft",r:[220,380,850],def:600,tag:["Luxury","gold"],d:"Economy Indian marble, Makrana white, or imported Italian. Laid, ground and mirror-polished.",inc:["Slab selection with you","Laying in cement bed","Diamond grinding & polish","Skirting included"]},
-  {id:"granite",cat:"marble",en:"Granite Kitchen Counter",bn:"গ্রানাইট কিচেন কাউন্টার",img:"kitchen",unit:"rft",r:[450,650,950],def:14,d:"Black Galaxy, Tan Brown or Steel Grey granite with edge moulding.",inc:["2 ft deep slab","Edge moulding","Sink cut-out"]},
+  {id:"house",cat:"build",en:"Full House Construction",bn:"সম্পূর্ণ বাড়ি নির্মাণ",img:"houseDone",unit:"sqft",r:[1980,2500,3275],def:1000,tag:["Most booked","hot"],d:"Foundation to finishing on built-up area. RCC frame, brickwork, plaster, flooring, wiring and plumbing.",inc:["Structural drawing & soil check","ISI cement and Fe-550 TMT steel","Brickwork, plaster, flooring","Electrical & plumbing points","Supervisor on site daily"]},
+  {id:"brick",cat:"build",en:"Brickwork, 10-inch wall",bn:"ইটের গাঁথনি",img:"scaffold",unit:"sqft",r:[155,195,257],def:300,d:"First-class red bricks in 1:6 cement mortar, true to line and plumb.",inc:["First-class kiln bricks","1:6 cement-sand mortar","Curing for 7 days","Lintel & sill bands extra"]},
+  {id:"plaster",cat:"build",en:"Cement Plastering",bn:"সিমেন্ট প্লাস্টার",img:"plaster",unit:"sqft",r:[40,49,64],def:800,d:"12 mm inside, 18 mm outside, smooth or sponge finish ready for putty.",inc:["Chicken mesh at joints","Level & right-angle check","Curing included"]},
+  {id:"reno",cat:"build",en:"Home Renovation & Repair",bn:"বাড়ি সংস্কার ও মেরামত",img:"worker",unit:"sqft",r:[500,620,805],def:400,tag:["Popular","gold"],d:"Break, rebuild and refinish old rooms, bathrooms and kitchens.",inc:["Demolition & debris removal","Wall re-plaster and crack repair","New tiles, paint and fittings"]},
+  {id:"boundary",cat:"build",en:"Boundary Wall",bn:"বাউন্ডারি ওয়াল",img:"brick",unit:"rft",r:[1180,1490,1955],def:120,d:"5 ft wall with footing, plinth beam and plaster, gate pillars included.",inc:["Footing & plinth beam","Plaster both sides","Gate pillars"]},
+  {id:"waterproof",cat:"build",en:"Roof Waterproofing",bn:"ছাদ ওয়াটারপ্রুফিং",img:"rebarSlab",unit:"sqft",r:[50,62,77],def:900,d:"Stops monsoon seepage. Crack filling, primer and two-coat membrane.",inc:["Crack & joint filling","Polymer / PU coating","5-year leak warranty (Premium)"]},
+  {id:"putty",cat:"paint",en:"Wall Putty (2 coats)",bn:"ওয়াল পুটি",img:"featureWall",unit:"sqft",r:[32,40,51],def:1000,tag:["Rate book","teal"],d:"Two coats of branded white cement putty, sanded smooth and ready for primer and paint.",inc:["Wall scraping & cleaning","2 coats branded putty","Sanding to a smooth finish","Ready for primer"]},
+  {id:"intpaint",cat:"paint",en:"Interior Wall Painting",bn:"ঘরের ভিতরের রং",img:"painter",unit:"sqft",r:[35,43,55],def:1200,tag:["Diwali offer","hot"],d:"Putty, primer and two coats of emulsion. Price is per sq ft of paintable wall.",inc:["Furniture covered with sheets","2 coats wall putty","1 coat primer + 2 coats emulsion","Clean-up after work"]},
+  {id:"extpaint",cat:"paint",en:"Exterior Weatherproof Paint",bn:"বাইরের দেওয়ালের রং",img:"exterior",unit:"sqft",r:[35,43,55],def:1500,d:"Anti-algae, rain-proof exterior emulsion with crack filling.",inc:["Pressure wash","Crack filling","Exterior primer + 2 coats","Scaffolding included"]},
+  {id:"texture",cat:"paint",en:"Texture & Designer Walls",bn:"টেক্সচার ডিজাইন ওয়াল",img:"featureWall",unit:"sqft",r:[90,114,145],def:120,d:"Stucco, metallic, rustic or stencil feature walls for living rooms.",inc:["Design sample on wall first","Base coat + texture coat","Protective top coat"]},
+  {id:"polish",cat:"paint",en:"Door & Furniture Polish",bn:"দরজা ও আসবাবের পালিশ",img:"living",unit:"sqft",r:[65,80,100],def:150,d:"Melamine, PU or duco polish for doors, windows and wardrobes.",inc:["Sanding & filling","Sealer coat","Melamine / PU top coat"]},
+  {id:"floortile",cat:"tiles",en:"Vitrified Floor Tiles",bn:"ফ্লোর টাইলস",img:"tiles",unit:"sqft",r:[120,151,195],def:800,tag:["Best value","gold"],d:"2×2 or 2×4 ft vitrified tiles, laid with adhesive and epoxy-free grout.",inc:["Tile + adhesive + grout","Laser levelling","Skirting included","Wastage 8% included"]},
+  {id:"bathtile",cat:"tiles",en:"Bathroom Tiling",bn:"বাথরুম টাইলস",img:"bath",unit:"sqft",r:[90,110,142],def:220,d:"Anti-skid floor and full-height wall tiles with proper slope to drain.",inc:["Waterproofing under floor","Anti-skid floor tiles","Wall tiles to 7 ft","Slope to drain"]},
+  {id:"kittile",cat:"tiles",en:"Kitchen Dado Tiles",bn:"কিচেন টাইলস",img:"kitchen",unit:"sqft",r:[117,147,193],def:60,d:"Stain-proof wall tiles behind the counter, 2 ft above slab.",inc:["Glossy or matte tiles","Corner beading","Epoxy grout (Premium)"]},
+  {id:"parking",cat:"tiles",en:"Parking & Outdoor Tiles",bn:"পার্কিং টাইলস",img:"brick",unit:"sqft",r:[90,114,149],def:400,d:"Heavy-duty chequered or paver tiles for car parking and courtyards.",inc:["PCC base","Heavy-duty tiles","Slope for rainwater"]},
+  {id:"marblefloor",cat:"marble",en:"Marble Flooring",bn:"মার্বেল ফ্লোরিং",img:"marbleFloor",unit:"sqft",r:[250,315,410],def:600,tag:["Luxury","gold"],d:"Economy Indian marble, Makrana white, or imported Italian. Laid, ground and mirror-polished.",inc:["Slab selection with you","Laying in cement bed","Diamond grinding & polish","Skirting included"]},
+  {id:"granite",cat:"marble",en:"Granite Kitchen Counter",bn:"গ্রানাইট কিচেন কাউন্টার",img:"kitchen",unit:"rft",r:[520,660,860],def:14,d:"Black Galaxy, Tan Brown or Steel Grey granite with edge moulding.",inc:["2 ft deep slab","Edge moulding","Sink cut-out"]},
   {id:"stairs",cat:"marble",en:"Marble / Granite Staircase",bn:"সিঁড়িতে মার্বেল",img:"stairs",unit:"step",r:[1800,2800,4500],def:16,d:"Tread and riser in one stone with nosing and anti-skid grooves.",inc:["Tread + riser","Nosing edge","Anti-skid grooves"]},
   {id:"mpolish",cat:"marble",en:"Marble Diamond Polishing",bn:"মার্বেল পালিশ",img:"marbleTex",unit:"sqft",r:[18,25,35],def:800,d:"Bring old dull marble back to a mirror shine. Stains and scratches removed.",inc:["Grinding & crack filling","Diamond polish","Crystal finish (Premium)"]},
-  {id:"pop",cat:"ceiling",en:"POP Ceiling with Cove LED",bn:"পিওপি ফলস সিলিং",img:"ceiling",unit:"sqft",r:[85,110,150],def:180,tag:["Trending","hot"],d:"Layered POP design with hidden cove lighting, like the one in our photo.",inc:["3D design before work","GI channel frame","Cove LED strip + driver","Downlight cut-outs"]},
-  {id:"gypsum",cat:"ceiling",en:"Gypsum Board Ceiling",bn:"জিপসাম বোর্ড সিলিং",img:"ceiling2",unit:"sqft",r:[95,125,170],def:180,d:"Crack-free Gyproc boards, faster and cleaner than POP.",inc:["Branded gypsum boards","Joint tape & compound","Ready for paint"]},
-  {id:"pvc",cat:"ceiling",en:"PVC Panel Ceiling",bn:"পিভিসি সিলিং",img:"living",unit:"sqft",r:[75,95,130],def:120,d:"Waterproof, termite-proof panels. Ideal for bathrooms and verandas.",inc:["Waterproof panels","Aluminium frame","No painting needed"]},
-  {id:"wallpanel",cat:"ceiling",en:"Wooden Wall Panels",bn:"কাঠের ওয়াল প্যানেল",img:"living",unit:"sqft",r:[180,260,380],def:80,d:"Fluted louvers and TV wall panels to match the ceiling design.",inc:["WPC or veneer louvers","Profile LED (optional)","Installation"]},
-  {id:"elev3d",cat:"exterior",en:"3D Elevation Design",bn:"৩ডি এলিভেশন ডিজাইন",img:"elevation",unit:"floor",r:[6000,12000,20000],def:2,tag:["Free with new house","gold"],d:"Photo-real 3D views of your house front in 2 to 3 colour options.",inc:["Site photos & measurement","2–3 colour options","Day and night renders"]},
+  {id:"pop",cat:"ceiling",en:"POP Ceiling with Cove LED",bn:"পিওপি ফলস সিলিং",img:"ceiling",unit:"sqft",r:[160,200,260],def:180,tag:["Trending","hot"],d:"Layered POP design with hidden cove lighting, like the one in our photo.",inc:["3D design before work","GI channel frame","Cove LED strip + driver","Downlight cut-outs"]},
+  {id:"gypsum",cat:"ceiling",en:"Gypsum Board Ceiling",bn:"জিপসাম বোর্ড সিলিং",img:"popRed",unit:"sqft",r:[140,170,230],def:180,d:"Crack-free Gyproc boards, faster and cleaner than POP.",inc:["Branded gypsum boards","Joint tape & compound","Ready for paint"]},
+  {id:"pvc",cat:"ceiling",en:"PVC Panel Ceiling",bn:"পিভিসি সিলিং",img:"blueCeil",unit:"sqft",r:[120,150,197],def:120,d:"Waterproof, termite-proof panels. Ideal for bathrooms and verandas.",inc:["Waterproof panels","Aluminium frame","No painting needed"]},
+  {id:"wallpanel",cat:"ceiling",en:"Wooden Wall Panels",bn:"কাঠের ওয়াল প্যানেল",img:"ceilJaali",unit:"sqft",r:[180,260,380],def:80,d:"Fluted louvers and TV wall panels to match the ceiling design.",inc:["WPC or veneer louvers","Profile LED (optional)","Installation"]},
+  {id:"elev3d",cat:"exterior",en:"3D Elevation Design",bn:"৩ডি এলিভেশন ডিজাইন",img:"elevModern",unit:"floor",r:[6000,12000,20000],def:2,tag:["Free with new house","gold"],d:"Photo-real 3D views of your house front in 2 to 3 colour options.",inc:["Site photos & measurement","2–3 colour options","Day and night renders"]},
   {id:"moulding",cat:"exterior",en:"Pillars, Cornice & Railing",bn:"পিলার, কার্নিশ ও রেলিং",img:"elevation",unit:"rft",r:[450,700,1100],def:80,d:"Roman pillars, curved balcony cornice and baluster railing work.",inc:["Cement moulds","Balusters","Finishing for paint"]},
   {id:"cladding",cat:"exterior",en:"Stone & Tile Cladding",bn:"স্টোন ক্ল্যাডিং",img:"villa",unit:"sqft",r:[160,240,380],def:150,d:"Natural stone, brick-look or porcelain cladding for the house front.",inc:["Stone / tile supply","Clamp or adhesive fixing","Sealer coat"]},
-  {id:"pvcfluted",cat:"pvcepoxy",en:"PVC Fluted Wall Panels",bn:"পিভিসি ফ্লুটেড ওয়াল প্যানেল",img:"pvcWalnut",unit:"sqft",r:[120,170,240],def:100,tag:["New","teal"],d:"Waterproof, termite-proof louver panels for TV walls, bedrooms and pooja rooms. No paint, no polish.",inc:["Walnut, teak, sage, white & black shades","Aluminium or PVC beading","Profile LED slots (optional)","Wipe-clean, 10-year life"]},
-  {id:"pvcuv",cat:"pvcepoxy",en:"PVC UV Marble Sheet",bn:"পিভিসি ইউভি মার্বেল শিট",img:"pvcMarble",unit:"sqft",r:[140,190,260],def:120,tag:["Trending","hot"],d:"High-gloss marble-look sheets for feature walls at a fraction of real marble's cost and weight.",inc:["8×4 ft glossy UV sheets","Statuario, onyx & gold-vein prints","Silicone & adhesive fixing","Done in 1 day per wall"]},
-  {id:"pvcbath",cat:"pvcepoxy",en:"PVC Panels for Bathroom & Balcony",bn:"বাথরুম ও বারান্দার পিভিসি",img:"pvcSage",unit:"sqft",r:[70,95,130],def:150,d:"100% moisture-proof wall and ceiling lining for damp bathrooms, balconies and kitchen lofts.",inc:["Moisture & termite proof","No seepage stains","Frame + panels + beading"]},
+  {id:"pvcfluted",cat:"pvcepoxy",en:"PVC Fluted Wall Panels",bn:"পিভিসি ফ্লুটেড ওয়াল প্যানেল",img:"pvcShowroom",unit:"sqft",r:[160,200,260],def:100,tag:["New","teal"],d:"Waterproof, termite-proof louver panels for TV walls, bedrooms and pooja rooms. No paint, no polish.",inc:["Walnut, teak, sage, white & black shades","Aluminium or PVC beading","Profile LED slots (optional)","Wipe-clean, 10-year life"]},
+  {id:"pvcuv",cat:"pvcepoxy",en:"PVC UV Marble Sheet",bn:"পিভিসি ইউভি মার্বেল শিট",img:"pvcMarble",unit:"sqft",r:[160,201,265],def:120,tag:["Trending","hot"],d:"High-gloss marble-look sheets for feature walls at a fraction of real marble's cost and weight.",inc:["8×4 ft glossy UV sheets","Statuario, onyx & gold-vein prints","Silicone & adhesive fixing","Done in 1 day per wall"]},
+  {id:"pvcbath",cat:"pvcepoxy",en:"PVC Panels for Bathroom & Balcony",bn:"বাথরুম ও বারান্দার পিভিসি",img:"pvcFloral",unit:"sqft",r:[130,160,210],def:150,d:"100% moisture-proof wall and ceiling lining for damp bathrooms, balconies and kitchen lofts.",inc:["Moisture & termite proof","No seepage stains","Frame + panels + beading"]},
   {id:"epoxyfloor",cat:"pvcepoxy",en:"3D Metallic Epoxy Flooring",bn:"৩ডি মেটালিক ইপক্সি ফ্লোর",img:"epoxyOcean",unit:"sqft",r:[110,180,320],def:300,tag:["Showstopper","hot"],d:"Seamless glossy floors in ocean, gold or ruby metallic swirl. Ideal for living rooms, showrooms and shops.",inc:["Surface grinding & primer","Self-levelling epoxy body coat","Metallic pigment art","PU top coat for scratch resistance"]},
   {id:"epoxygarage",cat:"pvcepoxy",en:"Epoxy Floor Coating (Parking / Shop)",bn:"পার্কিং ও দোকানের ইপক্সি ফ্লোর",img:"epoxyGold",unit:"sqft",r:[55,80,120],def:500,d:"Dust-free, oil-proof, easy-clean coating for garages, godowns, clinics and shops.",inc:["Crack repair","Epoxy primer + 2 coats","Anti-skid finish (optional)"]},
-  {id:"epoxygrout",cat:"pvcepoxy",en:"Epoxy Tile Grout",bn:"ইপক্সি টাইল গ্রাউট",img:"bath",unit:"sqft",r:[18,28,40],def:200,d:"Stain-proof, waterproof grout that never turns black. Best for bathrooms and kitchens.",inc:["Old grout raked out","Colour-matched epoxy grout","Anti-fungal","Glitter / metallic grout (Premium)"]},
+  {id:"epoxygrout",cat:"pvcepoxy",en:"Epoxy Tile Grout",bn:"ইপক্সি টাইল গ্রাউট",img:"bath",unit:"sqft",r:[55,68,84],def:200,d:"Stain-proof, waterproof grout that never turns black. Best for bathrooms and kitchens.",inc:["Old grout raked out","Colour-matched epoxy grout","Anti-fungal","Glitter / metallic grout (Premium)"]},
   {id:"epoxyseal",cat:"pvcepoxy",en:"Epoxy Crack Filling & Waterproof Seal",bn:"ইপক্সি দিয়ে ফাটল ও লিকেজ সারানো",img:"epoxyRuby",unit:"sqft",r:[45,65,95],def:200,d:"Structural epoxy bonding for cracks, joints and leaks in roofs, tanks and walls.",inc:["Crack V-grooving","Epoxy injection / bonding","Waterproof top seal"]},
-  {id:"vinylroll",cat:"vinyl",en:"PVC Vinyl Floor Roll (Carpet)",bn:"পিভিসি ভিনাইল ফ্লোর রোল",img:"vinylFloor",unit:"sqft",r:[24,36,55],def:200,tag:["Budget pick","teal"],d:"Fast, washable floor covering laid over old tiles or cement. Tile, mosaic and carpet prints. Done in a few hours.",inc:["1.2 to 2 mm roll, 6 ft wide","Floor cleaned & levelled","Full-spread adhesive","Edges sealed, wall beading"]},
-  {id:"vinylwood",cat:"vinyl",en:"Wood-look Vinyl Flooring",bn:"কাঠের মতো ভিনাইল ফ্লোর",img:"vinylWood",unit:"sqft",r:[32,48,70],def:200,tag:["New stock","hot"],d:"Teak, walnut and grey wood-check designs that look like real parquet at a fraction of the cost.",inc:["Wood-check & plank designs","Anti-skid, waterproof top layer","Adhesive & beading","Seams heat-welded (Premium)"]},
+  {id:"vinylroll",cat:"vinyl",en:"PVC Vinyl Floor Roll (Carpet)",bn:"পিভিসি ভিনাইল ফ্লোর রোল",img:"vinylFloor",unit:"sqft",r:[35,44,58],def:200,tag:["Budget pick","teal"],d:"Fast, washable floor covering laid over old tiles or cement. Tile, mosaic and carpet prints. Done in a few hours.",inc:["1.2 to 2 mm roll, 6 ft wide","Floor cleaned & levelled","Full-spread adhesive","Edges sealed, wall beading"]},
+  {id:"vinylwood",cat:"vinyl",en:"Wood-look Vinyl Flooring",bn:"কাঠের মতো ভিনাইল ফ্লোর",img:"vinylWood",unit:"sqft",r:[42,53,66],def:200,tag:["New stock","hot"],d:"Teak, walnut and grey wood-check designs that look like real parquet at a fraction of the cost.",inc:["Wood-check & plank designs","Anti-skid, waterproof top layer","Adhesive & beading","Seams heat-welded (Premium)"]},
   {id:"spc",cat:"vinyl",en:"SPC / LVT Click Plank Flooring",bn:"এসপিসি ক্লিক প্ল্যাঙ্ক ফ্লোর",img:"vinylWood",unit:"sqft",r:[95,128,180],def:300,d:"Rigid stone-plastic planks that click together. 100% waterproof, no glue, no breaking of old floor.",inc:["4 to 6 mm SPC planks","Underlay foam","Skirting & profiles","10-year wear warranty"]},
   {id:"wallpaper",cat:"vinyl",en:"Designer Wallpaper (3D, Damask, Floral)",bn:"ডিজাইনার ওয়ালপেপার",img:"wallpaper",unit:"sqft",r:[38,65,105],def:120,tag:["Bestseller","gold"],d:"Imported and Indian wallpapers for bedrooms, living rooms and pooja rooms. 57 sq ft per roll.",inc:["Wall putty touch-up","Primer & wallpaper paste","Pattern matching at joints","Choose from 300+ designs"]},
-  {id:"marblesheet",cat:"vinyl",en:"Self-adhesive Marble & Gloss Sheets",bn:"স্টিকার মার্বেল শিট",img:"marbleSheet",unit:"sqft",r:[30,45,70],def:100,d:"Peel-and-stick marble, gold-vein and gloss sheets for kitchen walls, wardrobes and table tops.",inc:["Waterproof, heat-resistant film","Surface cleaning","Bubble-free fixing","Edge finishing"]},
+  {id:"marblesheet",cat:"vinyl",en:"Self-adhesive Marble & Gloss Sheets",bn:"স্টিকার মার্বেল শিট",img:"marbleSheet",unit:"sqft",r:[42,53,66],def:100,d:"Peel-and-stick marble, gold-vein and gloss sheets for kitchen walls, wardrobes and table tops.",inc:["Waterproof, heat-resistant film","Surface cleaning","Bubble-free fixing","Edge finishing"]},
 ];
 /* labour rate per tier (material = total − labour) */
-const LAB = {house:[380,420,480],brick:[28,32,38],plaster:[14,16,18],reno:[160,220,300],boundary:[280,330,400],waterproof:[12,15,20],
- intpaint:[7,8,10],extpaint:[8,10,12],texture:[25,35,50],polish:[22,30,45],
- floortile:[20,24,30],bathtile:[28,32,38],kittile:[25,30,35],parking:[18,22,26],
- marblefloor:[45,55,75],granite:[90,110,140],stairs:[450,550,700],mpolish:[12,15,18],
- pop:[35,40,50],gypsum:[30,35,45],pvc:[20,24,30],wallpanel:[40,50,65],
- elev3d:[6000,12000,20000],moulding:[180,250,350],cladding:[45,55,70],
- vinylroll:[6,8,10],vinylwood:[7,9,12],spc:[15,18,22],wallpaper:[10,12,15],marblesheet:[8,10,12],
- pvcfluted:[25,30,40],pvcuv:[30,35,45],pvcbath:[20,24,30],epoxyfloor:[35,45,60],epoxygarage:[18,22,28],epoxygrout:[8,10,12],epoxyseal:[18,22,28]};
+const LAB = {house:[480,550,650],brick:[35,40,47],plaster:[15,17,20],reno:[180,205,245],boundary:[280,320,380],waterproof:[20,23,27],intpaint:[15,17,20],extpaint:[15,17,20],texture:[30,34,40],polish:[30,34,40],floortile:[40,46,55],bathtile:[35,40,47],kittile:[32,37,43],parking:[25,29,34],marblefloor:[60,70,80],granite:[120,140,160],stairs:[450,550,700],mpolish:[12,15,18],pop:[50,55,70],gypsum:[50,55,70],pvc:[35,40,47],wallpanel:[40,50,65],elev3d:[6000,12000,20000],moulding:[180,250,350],cladding:[45,55,70],vinylroll:[10,12,14],vinylwood:[12,14,16],spc:[15,18,22],wallpaper:[10,12,15],marblesheet:[12,14,16],pvcfluted:[50,55,70],pvcuv:[40,46,55],pvcbath:[50,55,70],epoxyfloor:[35,45,60],epoxygarage:[18,22,28],epoxygrout:[25,29,34],epoxyseal:[18,22,28],putty:[12,14,16]};
 ITEMS.forEach(i=>{ i.l = LAB[i.id] || i.r.map(x=>Math.round(x*.3)); i.m = i.r.map((x,k)=>x-i.l[k]); });
 let MODE = "full";
 const rateOf = (i,k) => MODE==="lab" ? i.l[k] : i.r[k];
@@ -1068,6 +1077,11 @@ const MATS = [
   {f:"mat-pvc-uvmarble.jpg",n:"Gold-vein UV Sheet",bn:"ইউভি মার্বেল শিট",k:"PVC UV sheet",p:"₹140–260"},
 ];
 const GAL = [
+  {k:"ceilJaali",t:"Jaali ceiling with warm cove LED"},{k:"houseDone",t:"Finished house, South 24 Parganas"},{k:"featureWall",t:"Leaf feature wall & POP ceiling"},
+  {k:"elevModern",t:"Modern elevation with stone cladding"},{k:"popRed",t:"Maroon & white POP ceiling"},{k:"fanRing",t:"Fan ring ceiling with blue LED"},
+  {k:"blueCeil",t:"Blue ceiling & marble-look vinyl floor"},{k:"pvcShowroom",t:"PVC panel showroom"},{k:"pvcFloral",t:"Floral PVC wall panels"},
+  {k:"footing",t:"Column footing rebar"},{k:"rebarSlab",t:"Foundation raft steel"},{k:"rebarCol",t:"Column starter bars"},
+  {k:"scaffold",t:"House under construction"},{k:"houseDone2",t:"Completed G+2 house"},
   {k:"ceiling",t:"POP ceiling, living room"},{k:"brick",t:"Ground floor brickwork"},{k:"living",t:"Living room finish"},
   {k:"elevation",t:"Elevation & railing work"},{k:"bath",t:"Bathroom tiling"},{k:"marbleFloor",t:"Marble flooring"},
   {k:"exterior",t:"Exterior painting"},{k:"kitchen",t:"Kitchen dado tiles"},{k:"stairs",t:"Granite staircase"},{k:"epoxyOcean",t:"3D ocean epoxy floor"},{k:"vinylShop",t:"Vinyl & wallpaper showroom"},{k:"vinylFloor",t:"Vinyl floor laid in 3 hours"},{k:"vinylWood",t:"Wood-check vinyl rolls"},{k:"pvcWalnut",t:"Walnut fluted PVC wall"},{k:"pvcMarble",t:"UV marble feature wall"},
@@ -1286,21 +1300,24 @@ function calc(){
   const A = est.area||0;
   if (tab==="paint"){
     const intA = A*3.5, extA = A*1.4;
-    const rate = {eco:[11,15],std:[17,22],prem:[26,34]}[est.tier];
+    const pi = ITEMS.find(i=>i.id==="intpaint"), pe = ITEMS.find(i=>i.id==="extpaint"), pu = ITEMS.find(i=>i.id==="putty"), tk = {eco:0,std:1,prem:2}[est.tier];
+    const rate = [pi.r[tk], pe.r[tk]];
+    let labP = 0;
     let wall = 0, cost = 0;
-    if (est.scope!=="ext"){ wall+=intA; cost+=intA*rate[0]; }
-    if (est.scope!=="int"){ wall+=extA; cost+=extA*rate[1]; }
-    const putty = est.x.putty && est.scope!=="ext" ? intA*5 : 0;
+    if (est.scope!=="ext"){ wall+=intA; cost+=intA*rate[0]; labP+=intA*pi.l[tk]; }
+    if (est.scope!=="int"){ wall+=extA; cost+=extA*rate[1]; labP+=extA*pe.l[tk]; }
+    const putty = est.x.putty && est.scope!=="ext" ? intA*pu.r[0] : 0;
     const wp = est.x.wp ? wall*0.25*12 : 0, tex = est.x.tex ? 120*110 : 0;
     total = cost+putty+wp+tex;
-    parts=[["Labour",total*.42,""],["Paint & primer",total*.43,"b"],["Putty & prep",total*.15,"c"]];
+    const puttyL = putty ? intA*pu.l[0] : 0;
+    parts=[["Labour",labP+puttyL+(wp+tex)*.35,""],["Paint & primer",cost-labP+(wp+tex)*.65,"b"],["Putty material",putty-puttyL,"c"]];
     const litres = wall*2/110;
     qty=[[Math.round(wall).toLocaleString("en-IN")+" sq ft","Paintable wall area"],[Math.ceil(litres)+" L","Paint for 2 coats"],[Math.ceil(putty?intA/18/40:0)+" bags","Putty (40 kg)"],[Math.max(3,Math.ceil(wall/450))+" days","Team of 3 painters"]];
     name="Painting estimate"; detail=`${({int:"Interior",ext:"Exterior",both:"Interior + exterior"})[est.scope]} · ${A.toLocaleString("en-IN")} sq ft carpet · ${({eco:"Economy",std:"Standard",prem:"Luxury"})[est.tier]}`;
   }
   if (tab==="tiles"){
     // [material/sqft, labour/sqft, box sq ft, adhesive per sq ft]
-    const m = {vit:[80,24,15.5,6],plank:[104,28,15.5,8],marble:[290,55,0,10],italian:[770,75,0,10],vinyl:[24,7,0,3],spc:[106,18,22,0]}[est.mat];
+    const m = {vit:[80,40,15.5,4],plank:[104,46,15.5,6],marble:[190,60,0,8],italian:[770,80,0,10],vinyl:[25,10,0,0],spc:[80,15,22,0]}[est.mat];
     const skirtA = est.x.skirt ? Math.sqrt(A)*4*0.33 : 0;
     const matC = (A*1.08+skirtA)*m[0], adh = A*m[3], labC = (A+skirtA)*m[1] + (est.x.remove ? A*18 : 0) + (est.x.polish ? A*25 : 0);
     total = matC+adh+labC;
@@ -1310,7 +1327,7 @@ function calc(){
     name="Flooring estimate"; detail=`${({vit:"Vitrified 2×2",plank:"Wood plank 2×4",marble:"Makrana marble",italian:"Italian marble",vinyl:"PVC vinyl roll",spc:"SPC click plank"})[est.mat]} · ${A.toLocaleString("en-IN")} sq ft`;
   }
   if (tab==="ceiling"){
-    const r = {pop:85,gyp:98,pvc:78}[est.type], d = {plain:0,cove:22,designer:55}[est.design];
+    const r = {pop:138,gyp:140,pvc:120}[est.type], d = {plain:0,cove:22,designer:55}[est.design];
     const lights = Math.ceil(A/25), cove = est.design==="plain"?0:Math.round(Math.sqrt(A)*4);
     total = A*(r+d) + lights*380 + cove*160;
     parts=[["Board & frame",A*r,"b"],["Design work",A*d,""],["LED & wiring",lights*380+cove*160,"c"]];
@@ -1319,20 +1336,20 @@ function calc(){
   }
   if (tab==="pvc"){
     const k = {eco:0,std:1,prem:2}[est.tier];
-    const rate = {fluted:[120,170,240],uv:[140,190,260],metal:[110,180,320],coat:[55,80,120]}[est.prod][k];
-    const led = est.x.led ? Math.round(Math.sqrt(A)*2)*220 : 0, gr = est.x.grout ? 100*28 : 0;
+    const it = ITEMS.find(i=>i.id===({fluted:"pvcfluted",uv:"pvcuv",metal:"epoxyfloor",coat:"epoxygarage"})[est.prod]), rate = it.r[k];
+    const led = est.x.led ? Math.round(Math.sqrt(A)*2)*220 : 0, gr = est.x.grout ? 100*ITEMS.find(i=>i.id==="epoxygrout").r[0] : 0;
     total = A*rate + led + gr;
     const isFloor = est.prod==="metal"||est.prod==="coat";
-    parts=[["Material",A*rate*.62,"b"],["Labour",A*rate*.38,""],["LED & grout",led+gr,"c"]];
+    parts=[["Material",A*it.m[k],"b"],["Labour",A*it.l[k],""],["LED & grout",led+gr,"c"]];
     qty = isFloor
       ? [[Math.ceil(A*(est.prod==="metal"?0.35:0.18))+" kg","Epoxy resin + hardener"],[Math.ceil(A/400)+" kg","Metallic pigment"],["24 hrs","Walk-on time"],[Math.max(2,Math.ceil(A/250)+1)+" days","Work time"]]
       : [[Math.ceil(A*1.05/(est.prod==="uv"?32:9))+"",est.prod==="uv"?"UV sheets (8×4 ft)":"Fluted panels (9.5 ft × 6 in)"],[Math.ceil(A/60)+" tubes","Adhesive / silicone"],[led?Math.round(Math.sqrt(A)*2)+" ft":"—","Profile LED"],[Math.max(1,Math.ceil(A/150))+" days","Work time"]];
     name="PVC & epoxy estimate"; detail=`${({fluted:"PVC fluted panels",uv:"PVC UV marble sheet",metal:"3D metallic epoxy floor",coat:"Epoxy floor coating"})[est.prod]} · ${A.toLocaleString("en-IN")} sq ft · ${({eco:"Economy",std:"Standard",prem:"Premium"})[est.tier]}`;
   }
   if (tab==="build"){
-    const fl = +est.floors, B = A*fl, rate = {eco:1650,std:1950,prem:2450}[est.tier];
+    const fl = +est.floors, B = A*fl, hi = ITEMS.find(i=>i.id==="house"), tk = {eco:0,std:1,prem:2}[est.tier], rate = hi.r[tk];
     total = B*rate;
-    parts=[["Structure (RCC, brick)",total*.48,"b"],["Finishing",total*.32,""],["Labour",total*.20,"c"]];
+    parts=[["Material",B*hi.m[tk],"b"],["Labour",B*hi.l[tk],"c"]];
     qty=[[Math.round(B*0.4).toLocaleString("en-IN")+" bags","Cement (50 kg)"],[(B*4/1000).toFixed(1)+" t","TMT steel"],[Math.round(B*8).toLocaleString("en-IN"),"Bricks"],[Math.round(4+fl*1.5+B/1500)+" months","Build time"]];
     name="House construction estimate"; detail=`${["","G","G+1","G+2","G+3"][fl]} · ${B.toLocaleString("en-IN")} sq ft built-up · ${({eco:"Basic",std:"Standard",prem:"Premium"})[est.tier]}`;
   }
