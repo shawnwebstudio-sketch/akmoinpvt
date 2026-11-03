@@ -869,7 +869,8 @@ footer.foot .logo-txt strong{color:var(--on-dark)}
         <a class="c-item js-wa" href="#" target="_blank" rel="noopener"><span class="ic wa"><svg><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b class="js-phone">+91 70445 86802</b></span></a>
         <div class="c-item"><span class="ic"><svg><use href="#i-call"/></svg></span><span><small>Call, 8 am to 9 pm</small><b class="js-phone">+91 70445 86802</b></span><button class="copy" id="copyPhone">Copy</button></div>
         <a class="c-item" href="mailto:akashmondal6152@gmail.com"><span class="ic"><svg><use href="#i-doc"/></svg></span><span style="min-width:0"><small>Email</small><b class="js-email" style="font-size:15px;word-break:break-all">akashmondal6152@gmail.com</b></span></a>
-        <div class="c-item"><span class="ic"><svg><use href="#i-pin"/></svg></span><span><small>Service area</small><b style="font-family:var(--f-body)" class="js-area">Kolkata, Howrah, Hooghly & North 24 Parganas</b></span></div>
+        <div class="c-item"><span class="ic"><svg><use href="#i-pin"/></svg></span><span><small>Office address</small><b style="font-family:var(--f-body);font-size:15.5px" class="js-addr">Near Sabuj Sangha Club, Dakshin Jagaddal, South 24 Parganas, West Bengal 700151</b></span></div>
+        <div class="c-item"><span class="ic"><svg><use href="#i-home"/></svg></span><span><small>Service area</small><b style="font-family:var(--f-body);font-size:15.5px" class="js-area">Kolkata, South 24 Parganas & nearby districts</b></span></div>
       </div>
     </div>
     <form class="enq" id="enq" novalidate>
@@ -893,7 +894,7 @@ footer.foot .logo-txt strong{color:var(--on-dark)}
 <footer class="foot">
   <div class="wrap">
     <span class="logo"><svg><use href="#logo"/></svg><span class="logo-txt"><strong data-k="brandShort">Akash Mondal</strong><small>International Pvt. Ltd. · আকাশ মন্ডল</small></span></span>
-    <span>© 2026 <span data-k="brand">Akash Mondal International Pvt. Ltd.</span> · <span class="js-email">akashmondal6152@gmail.com</span> · Rates are indicative</span>
+    <span>© 2026 <span data-k="brand">Akash Mondal International Pvt. Ltd.</span> · <span class="js-addr">Near Sabuj Sangha Club, Dakshin Jagaddal, South 24 Parganas, West Bengal 700151</span> · <span class="js-email">akashmondal6152@gmail.com</span> · Rates are indicative</span>
     <span>Website by <b style="color:var(--on-dark)">Shawn Webstudio</b></span>
   </div>
 </footer>
@@ -943,7 +944,8 @@ const CONFIG = {
   phone: "917044586802",            // WhatsApp / call number, country code first, digits only
   phoneLabel: "+91 70445 86802",
   email: "akashmondal6152@gmail.com",
-  area: "Kolkata, Howrah, Hooghly & North 24 Parganas",
+  area: "Kolkata, South 24 Parganas & nearby districts",
+  address: "Near Sabuj Sangha Club, Dakshin Jagaddal, South 24 Parganas, West Bengal 700151",
   offers: ["দীপাবলি অফার: ফ্রি সাইট ভিজিট ও মাপজোক", "Diwali offer: 10% off labour on full-home painting", "ফলস সিলিং-এ ফ্রি LED কোভ লাইট", "Free 3D elevation sketch with every new-house contract", "EMI on projects above ₹2 lakh", "নতুন: ৩ডি মেটালিক ইপক্সি ফ্লোর ও পিভিসি ফ্লুটেড প্যানেল", "Labour-only rates available: buy your own material, pay only for our mistris", "ভিনাইল ফ্লোর মাত্র ₹২৪/স্কয়ার ফুট থেকে"]
 };
 const P = (f, fb) => ({src: "photos/" + f, fb: "img/" + fb});
@@ -1088,6 +1090,7 @@ $$("[data-k=brandShort]").forEach(e=>e.textContent=CONFIG.brandShort);
 $$(".js-email").forEach(e=>e.textContent=CONFIG.email);
 $$(".js-phone").forEach(e=>e.textContent=CONFIG.phoneLabel);
 $$(".js-area").forEach(e=>e.textContent=CONFIG.area);
+$$(".js-addr").forEach(e=>e.textContent=CONFIG.address);
 $$(".js-wa").forEach(a=>a.href=waLink(`Hello ${CONFIG.brand}, I want a quote for construction / interior work.`));
 $("#strip").innerHTML = [...CONFIG.offers, ...CONFIG.offers].map(o=>`<span>✦ <b>${o}</b></span>`).join("");
 $("#copyPhone").addEventListener("click", e => { navigator.clipboard?.writeText(CONFIG.phoneLabel).then(()=>toast("Number copied"),()=>toast(CONFIG.phoneLabel)); });
